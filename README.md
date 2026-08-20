@@ -34,6 +34,26 @@ docker build -t cooklens .
 docker run --rm -p 8000:8000 -e PORT=8000 cooklens
 ```
 
+## Deploy with Railway
+
+Railway can deploy this project directly from GitHub using the included `railway.toml` and `Dockerfile`.
+
+1. Push the project to GitHub.
+2. Create a new Railway project and choose **Deploy from GitHub Repo**.
+3. Select the repository and wait for the Docker build.
+4. Add these variables in Railway's **Variables** tab:
+
+```env
+APP_ENV=production
+DETECTOR_MODE=mock
+VISION_MODEL=gpt-4o-mini
+VISION_API_KEY=your_new_key_here
+```
+
+5. In Railway, create a public domain from **Settings > Networking > Generate Domain**.
+
+Railway pricing and trial credits can change, so check the current usage page before relying on it as a permanently free host. Do not commit `.env` or place API keys in `railway.toml`.
+
 ## Test
 
 ```powershell
